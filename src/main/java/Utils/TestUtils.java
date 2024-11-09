@@ -14,8 +14,8 @@ import Base.BasePage;
 
 public class TestUtils extends BasePage {
 
-	public static long PageLoad_Timeout = 20;
-	public static long ImplicitlyWait_TimeOut = 20;
+	public static long PageLoad_Timeout = 10;
+	public static long ImplicitlyWait_TimeOut = 10;
 	public static WebDriverWait wait;
 
 	public static void waitUntilVisiblityOfElement(WebElement element, long time) {

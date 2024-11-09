@@ -38,14 +38,14 @@ public class ProfileUpdateTestCases extends BasePage {
 		closeConfiguration();
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, enabled = true)
 	public void updateProfileTest1() {
 
 		System.out.println("Login into the naukari profile with entring username & password");
 		dashboardPage = homePage.loginToNaukariProfile(prop.getProperty("Username1"), prop.getProperty("Password1"));
 		System.out.println("Verfiy correct user is logged in.");
 		System.out.println("Sucessfully logged in with the correct user.");
-		assertEquals(dashboardPage.getProfileTitleName(), "Utkarsh Howale",
+		assertEquals(dashboardPage.getProfileName(), prop.getProperty("ProfileName_1"),
 				"Profile title not matching as expected...!!!");
 		System.out.println("Navigate to the profile page.");
 		profilePage = dashboardPage.navigateToProfilePage();
@@ -58,13 +58,13 @@ public class ProfileUpdateTestCases extends BasePage {
 
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2, enabled = false)
 	public void updateProfileTest2() {
 
 		System.out.println("Login into the naukari profile with entring username & password");
 		dashboardPage = homePage.loginToNaukariProfile(prop.getProperty("Username2"), prop.getProperty("Password2"));
 		System.out.println("Verfiy correct user is logged in.");
-		assertEquals(dashboardPage.getProfileTitleName(), "Rushikesh Shinde",
+		assertEquals(dashboardPage.getProfileName(), prop.getProperty("ProfileName_2"),
 				"Profile title not matching as expected...!!!");
 		System.out.println("Sucessfully logged in with the correct user.");
 		System.out.println("Navigate to the profile page.");

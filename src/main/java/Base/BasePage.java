@@ -9,14 +9,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import Utils.TestUtils;
 
 public class BasePage {
 
 	public static WebDriver driver;
-	public static ChromeOptions options;
+	public static ChromeOptions chromeOptions;
 	public static FileInputStream file;
 	public static Properties prop;
 
@@ -45,21 +47,23 @@ public class BasePage {
 
 		case "chrome":
 
-//			ChromeOptions options = new ChromeOptions();
-//			options.addArguments("--headless");
-//			driver = new ChromeDriver(options);
-
-			driver = new ChromeDriver();
+			ChromeOptions chromeOptions = new ChromeOptions();
+//			chromeOptions.addArguments("--headless");
+			driver = new ChromeDriver(chromeOptions);
 			break;
 
 		case "firefox":
 
-			driver = new FirefoxDriver();
+			FirefoxOptions firefoxOptions = new FirefoxOptions();
+			firefoxOptions.addArguments("--headless");
+			driver = new FirefoxDriver(firefoxOptions);
 			break;
 
 		case "edge":
 
-			driver = new EdgeDriver();
+			EdgeOptions edgeOptions = new EdgeOptions();
+			edgeOptions.addArguments("--headless");
+			driver = new EdgeDriver(edgeOptions);
 			break;
 
 		default:
@@ -69,7 +73,7 @@ public class BasePage {
 		}
 
 		driver.manage().window().maximize();
-		driver.get("https://www.naukri.com/");
+		driver.get(prop.getProperty("BaseUrl"));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TestUtils.ImplicitlyWait_TimeOut));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(TestUtils.PageLoad_Timeout));
 		System.out.println("Browser lounched...!!");

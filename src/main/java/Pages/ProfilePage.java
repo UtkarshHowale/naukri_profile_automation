@@ -14,24 +14,25 @@ public class ProfilePage extends BasePage {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//div[@class=\"widgetHead\"]//span[@class=\"edit icon\"]")
-	WebElement resume_headline_element;
+	private @FindBy(xpath = "//div[@class=\"widgetHead\"]//span[@class=\"edit icon\"]") WebElement resume_headline_element;
 
-	@FindBy(xpath = "//textarea[@id='resumeHeadlineTxt']")
-	WebElement resume_headline_text_area_element;
+	private @FindBy(xpath = "//textarea[@id='resumeHeadlineTxt']") WebElement resume_headline_text_area_element;
 
-	@FindBy(xpath = "//button[normalize-space()='Save']")
-	WebElement save_button_element;
+	private @FindBy(xpath = "//button[normalize-space()='Save']") WebElement save_button_element;
 
-	@FindBy(xpath = "//p[@class='msg' and text() = \"Resume Headline has been successfully saved.\"]")
-	WebElement update_success_text;
+	private @FindBy(xpath = "//p[@class='msg' and text() = \"Resume Headline has been successfully saved.\"]") WebElement update_success_text;
+
+	private WebElement getResumeHeadline() {
+
+		TestUtils.waitUntilVisiblityOfElement(resume_headline_element, 10);
+		return resume_headline_element;
+	}
 
 	private void clickOnResumeHeadline() {
 
 		try {
 
-			TestUtils.waitUntilVisiblityOfElement(resume_headline_element, 10);
-			resume_headline_element.click();
+			getResumeHeadline().click();
 
 		} catch (Exception e) {
 
@@ -52,12 +53,17 @@ public class ProfilePage extends BasePage {
 		textArea.sendKeys(headline);
 	}
 
+	private WebElement getSaveButton() {
+
+		TestUtils.waitUntilVisiblityOfElement(save_button_element, 10);
+		return save_button_element;
+	}
+
 	private void clickOnSaveButton() {
 
 		try {
 
-			TestUtils.waitUntilVisiblityOfElement(save_button_element, 10);
-			save_button_element.click();
+			getSaveButton().click();
 
 		} catch (Exception e) {
 
@@ -65,10 +71,15 @@ public class ProfilePage extends BasePage {
 		}
 	}
 
-	public String getHeadlineUpdateSuccessMessage() {
+	private WebElement getHeadlineUpdateMessage() {
 
 		TestUtils.waitUntilVisiblityOfElement(update_success_text, 10);
-		return update_success_text.getText();
+		return update_success_text;
+	}
+
+	public String getHeadlineUpdateSuccessMessage() {
+
+		return getHeadlineUpdateMessage().getText();
 	}
 
 	public void updateResumeHeadline(String resumeHeadline) {

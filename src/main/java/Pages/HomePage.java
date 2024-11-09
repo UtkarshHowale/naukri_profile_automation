@@ -14,17 +14,13 @@ public class HomePage extends BasePage {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(id = "login_Layer")
-	WebElement loginButton_element;
+	private @FindBy(id = "login_Layer") WebElement loginButton_element;
 
-	@FindBy(xpath = "//input[@placeholder='Enter your active Email ID / Username']")
-	WebElement username_element;
+	private @FindBy(xpath = "//input[@placeholder='Enter your active Email ID / Username']") WebElement username_element;
 
-	@FindBy(xpath = "//input[@placeholder='Enter your password']")
-	WebElement password_element;
+	private @FindBy(xpath = "//input[@placeholder='Enter your password']") WebElement password_element;
 
-	@FindBy(css = "button[type='submit']")
-	WebElement login_button_element;
+	private @FindBy(css = "button[type='submit']") WebElement login_button_element;
 
 	private WebElement getUsername() {
 
@@ -61,7 +57,7 @@ public class HomePage extends BasePage {
 		}
 	}
 
-	private void openLoginPanal() {
+	private void openLoginPanel() {
 
 		try {
 
@@ -76,7 +72,7 @@ public class HomePage extends BasePage {
 
 	public DashboardPage loginToNaukariProfile(String enterUsername, String enterPassword) {
 
-		openLoginPanal();
+		openLoginPanel();
 		setUsername(enterUsername);
 		setPassword(enterPassword);
 		clickLoginButton();
