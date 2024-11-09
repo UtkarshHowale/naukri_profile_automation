@@ -43,8 +43,10 @@ The project is organized as follows:
 To execute the tests:
 
 1. Clone the repository to your local machine.
-2. Run `mvn clean install` to build the project.
-3. Run `testng.xml` to execute the test suite from the IDE, or use the following command from the terminal:
+    ```bash
+   git clone https://github.com/yourusername/naukri_profile_automation.git
+3. Run `mvn clean install` to build the project.
+4. Run `testng.xml` to execute the test suite from the IDE, or use the following command from the terminal:
 
    ```bash
    mvn test
