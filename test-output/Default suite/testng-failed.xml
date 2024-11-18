@@ -5,8 +5,8 @@
     <classes>
       <class name="Tests.ProfileUpdateTestCases">
         <methods>
+          <include name="updateProfileTest2"/>
           <include name="tearDownConfig"/>
-          <include name="updateProfileTest1"/>
           <include name="setUpConfig"/>
         </methods>
       </class> <!-- Tests.ProfileUpdateTestCases -->
